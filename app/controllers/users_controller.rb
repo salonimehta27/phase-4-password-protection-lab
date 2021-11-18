@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     before_action :authorize, only:[:show]
 rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
   def create 
-    user.User.create(user_params)
+    user=User.create(user_params)
     session[:user_id]=user.id
     render json: user, status: :created
   end
